@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.User">
+        <constructor>
+            <idArg column="id" javaType="_long" jdbcType="BIGINT" />
+            <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="role_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+        </constructor>
+    </resultMap>
+
+    <select id="getUserByUsername" parameterType="java.lang.String" resultType="com.example.demo.entity.User">
+        select * from ssm_user where user_name = #{username}
+    </select>
+    <delete id="delUserByUsername" parameterType="java.lang.String">
+        delete from ssm_user WHERE (`user_name` = #{username})
+    </delete>
+</mapper>
